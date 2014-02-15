@@ -79,7 +79,13 @@
         $.getJSON( "./oebb/query.exe/dny?tpl=singletrain2json&performLocating=8&&look_nv=get_rtmsgstatus|no|get_zntrainname|no|get_rtfreitextmn|no|get_realstops|no|get_rtstoptimes|no|get_fstop|no|get_pstop|yes|get_nstop|no|get_lstop|no|zugposmode|2|&look_trainid="+trainId, function( data ) {
           console.log("train info loaded!");
 
-          console.log(data);
+          console.log("previous stop: " +data.look.singletrain[0].pstopname);
+          console.log("next stop: " +data.look.singletrain[0].nstopname);
+          console.log("delay: " +data.look.singletrain[0].delay);
+
+          $("#prevStop").text(data.look.singletrain[0].pstopname);
+          $("#nextStop").text(data.look.singletrain[0].nstopname);
+          $("#delay").text(data.look.singletrain[0].delay);
 
         });
       }
@@ -107,8 +113,9 @@
             <div id="trainDisplay" style="display:none;">
               <p><h4>Tracking train <i id="trackingTrainName"></i>:</h4></p>
                <div style="padding-left:20px;">
-                <p>Previous stop: </p>
-                <p>Next station: </p>
+                <p>Delay: <i id="delay"></i></p>
+                <p>Previous stop: <i id="prevStop"></i></p>
+                <p>Next station: <i id="nextStop"></i></p>
                 <p><strong>Next stop: </strong></p>
               </div>
             </div>
