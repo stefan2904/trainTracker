@@ -1,0 +1,5 @@
+RewriteEngine  on
+RewriteBase    /trainTracker/
+RewriteRule    ^oebb/(.*)$  http://zugradar.oebb.at/bin/$1  [P]
+ProxyPassReverse /trainTracker/oebb/ http://zugradar.oebb.at/bin/
+
