@@ -39,14 +39,7 @@
           window.location.hash = train.replace(" ", "_");
           console.log("set train to " +train);
 
-          if(findTrain(train)) {
-            $("#trainForm").toggle();
-            $("#trackingTrainName").text(train);
-            $("#trainDisplay").toggle();
-          } else {
-            console.log("Train not found?");
-            $("#errorDisplay").show();
-          }
+          findTrain(train);
       }
 
       function findTrain(t) {
@@ -64,12 +57,18 @@
 
           // trainIdTime and trainId
 
-          if(trainId != "") console.log("train found: " +trainId)
-          else console.log("Train not found?");
+          if(trainId != "") {
+            console.log("train found: " +trainId)
+            $("#trainForm").toggle();
+            $("#trackingTrainName").text(train);
+            $("#trainDisplay").toggle();
+          }
+          else {
+            console.log("Train not found?");
+            $("#errorDisplay").show();
+          }
 
         });
-
-        return false;
       }
     </script>
 
