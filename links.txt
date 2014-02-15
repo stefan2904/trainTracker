@@ -1,0 +1,14 @@
+RJ 530:
+
+http://zugradar.oebb.at/bin/query.exe/dny?tpl=singletrain2json&performLocating=8&&look_nv=get_rtmsgstatus|no|get_zntrainname|no|get_rtfreitextmn|no|get_realstops|yes|get_rtstoptimes|no|get_fstop|no|get_pstop|yes|get_nstop|no|get_lstop|no|zugposmode|2|&look_trainid=84/110461/18/19/181&
+
+all stations, not only stops:
+
+zugradar.oebb.at/bin/query.exe/dny?tpl=singletrain2json&performLocating=8&&look_nv=get_rtmsgstatus|no|get_zntrainname|no|get_rtfreitextmn|no|get_realstops|no|get_rtstoptimes|no|get_fstop|no|get_pstop|yes|get_nstop|no|get_lstop|no|zugposmode|2|&look_trainid=84/110461/18/19/181&
+
+
+all trains?
+
+http://zugradar.oebb.at/bin/query.exe/dny?look_minx=7880768&look_maxx=18306793&look_miny=45577886&look_maxy=50564379&tpl=trains2json2&look_productclass=63&look_json=yes&performLocating=1&look_nv=get_zntrainname|no|attr|81|zugposmode|2|interval|30000|intervalstep|30000|maxnumberoftrains|500|
+
+

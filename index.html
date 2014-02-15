@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <title>2904 TrainTracker</title>
+
+    <!-- Bootstrap core CSS -->
+    <link href="./css/bootstrap.min.css" rel="stylesheet">
+    <script src="./js/jquery-2.1.0.min.js"></script>
+    <script src="./js/bootstrap.min.js"></script>
+
+    <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+      <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+    <script>
+      var hash = "";
+      var train = "";
+      var trainId = "";
+
+      $( document ).ready(function() {
+        hash = (window.location.hash) ? window.location.hash.substring(window.location.hash.indexOf("#")+1) : "";
+        console.log( "document loaded, hash is " +(hash.length ? hash : "empty"));
+
+        if(hash.length) setTrain(hash);
+        else $("#setTrain").on("click", function(){ setTrain($("#trainName").val()) });
+      });
+
+      function setTrain(t) {
+          $("#errorDisplay").hide();
+          train = t.replace("_", " ");
+          window.location.hash = train.replace(" ", "_");
+          console.log("set train to " +train);
+
+          if(findTrain(train)) {
+            $("#trainForm").toggle();
+            $("#trackingTrainName").text(train);
+            $("#trainDisplay").toggle();
+          } else {
+            console.log("Train not found?");
+            $("#errorDisplay").show();
+          }
+      }
+
+      function findTrain(t) {
+        // http://zugradar.oebb.at/bin/query.exe/dny?look_minx=7880768&look_maxx=18306793&look_miny=45577886&look_maxy=50564379&tpl=trains2json2&look_productclass=63&look_json=yes&performLocating=1&look_nv=get_zntrainname|no|attr|81|zugposmode|2|interval|30000|intervalstep|30000|maxnumberoftrains|500|
+
+        $.getJSON( "http://zugradar.oebb.at/bin/query.exe/dny?look_minx=7880768&look_maxx=18306793&look_miny=45577886&look_maxy=50564379&tpl=trains2json2&look_productclass=63&look_json=yes&performLocating=1&look_nv=get_zntrainname|no|attr|81|zugposmode|2|interval|30000|intervalstep|30000|maxnumberoftrains|500|&callback=foo", function( data ) {
+          console.log("success!");
+        });
+
+        return false;
+      }
+    </script>
+
+  </head>
+
+  <body>
+
+    <div class="jumbotron">
+            <h1>2904 TrainTracker</h1>
+            <h2 class="lead">Uses the <a href="http://live.oebb.at">OEBB Zugradar</a> to track location of a specific train.</h2>
+
+
+            <div id="errorDisplay" style="display:none;">
+              <p style="color:red;"><strong>Error: Train not found. :(</strong></p>
+            </div>
+
+            <div id="trainForm">
+              <p>Please specify your train: <input type="text" value="" id="trainName" /></p>
+              <p><a class="btn btn-primary btn-lg" role="button" id="setTrain">Track &raquo;</a></p>
+            </div>
+
+            <div id="trainDisplay" style="display:none;">
+              <p><h4>Tracking train <i id="trackingTrainName"></i>:</h4></p>
+               <div style="padding-left:20px;">
+                <p>Previous stop: </p>
+                <p>Next station: </p>
+                <p><strong>Next stop: </strong></p>
+              </div>
+            </div>
+    </div>
+  </body>
+</html>
