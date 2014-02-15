@@ -53,7 +53,7 @@
 
         $.getJSON( "./oebb/query.exe/dny?look_minx=7880768&look_maxx=18306793&look_miny=45577886&look_maxy=50564379&tpl=trains2json2&look_productclass=63&look_json=yes&performLocating=1&look_nv=get_zntrainname|no|attr|81|zugposmode|2|interval|30000|intervalstep|30000|maxnumberoftrains|500|", function( data ) {
           console.log("trains loaded!");
-          $.each([data, function( index, value ) {
+          $.each(data, function( index, value ) {
             console.log( index + ": " + value );
             });
         });
