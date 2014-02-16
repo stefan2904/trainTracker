@@ -35,6 +35,8 @@
 
       function setTrain(t) {
           $("#errorDisplay").hide();
+          $("#loading").show();
+
           train = t.replace("_", " ");
           window.location.hash = train.replace(" ", "_");
           console.log("set train to " +train);
@@ -80,6 +82,7 @@
             console.log("Train not found?");
             $("#errorMsg").text("Error: Train not found. :(");
             $("#errorDisplay").show();
+            $("#loading").hide();
           }
 
         });
@@ -97,6 +100,7 @@
           $("#nextStop").text(data.look.singletrain[0].nstopname+" (" +data.look.singletrain[0].narr +")");
           $("#delay").text(data.look.singletrain[0].delay);
 
+          $("#loading").hide();
         });
       }
 
@@ -121,7 +125,7 @@
             </div>
 
             <div id="trainDisplay" style="display:none;">
-              <p><h4>Tracking train <i id="trackingTrainName"></i>:</h4></p>
+              <p><h4>Tracking train <i id="trackingTrainName"></i>: <strong id="loading" style="display:none;"> Loading ...</strong></h4></p>
                <div style="padding-left:20px;">
                 <p>Delay: <i id="delay"></i></p>
                 <p>Previous station: <i id="prevStop"></i></p>
