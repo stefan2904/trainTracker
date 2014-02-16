@@ -53,8 +53,10 @@
 
           $.each(data.t, function( index, value ) {
             console.log( index + ": " + value.n );
-            if(value.n.trim() == t) trainId = value.i;
-            cnt = cnt + 1; 
+            if(value.n.trim() == t) {
+              trainId = value.i;
+              cnt = cnt + 1; 
+             }
           });
 
           // trainIdTime and trainId
