@@ -51,7 +51,7 @@
           trainIdTime = data.ts;
 
           $.each(data.t, function( index, value ) {
-            console.log( index + ": " + value.n.trim() );
+            console.log( index + ": " + value.n );
             if(value.n.trim() == t) trainId = value.i;
           });
 
