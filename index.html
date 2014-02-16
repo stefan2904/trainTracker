@@ -75,7 +75,7 @@
             }
 
             // start periodic update here:
-            setInterval(updateTrainStatus(),3000);
+            setInterval(updateTrainStatus, 3000);
 
           }
           else {
@@ -89,6 +89,8 @@
       }
 
       function updateTrainStatus() {
+        $("#loading").show();
+
         $.getJSON( "./oebb/query.exe/dny?tpl=singletrain2json&performLocating=8&&look_nv=get_rtmsgstatus|no|get_zntrainname|no|get_rtfreitextmn|no|get_realstops|no|get_rtstoptimes|no|get_fstop|no|get_pstop|yes|get_nstop|no|get_lstop|no|zugposmode|2|&look_trainid="+trainId, function( data ) {
           console.log("train info loaded!");
 
