@@ -1,7 +1,11 @@
 trainTracker
 ============
 
-yet another random experiment
+yet another random experiment.
+
+Do not use this. 
+This is just a experiment.
+You are not allowed to use the accessed data!
 
 
 Ajax Proxy
