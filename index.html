@@ -72,8 +72,8 @@
               $("#errorDisplay").show();
             }
 
-            // TODO: start periodic update here:
-            updateTrainStatus();
+            // start periodic update here:
+            setInterval(updateTrainStatus(),3000);
 
           }
           else {
