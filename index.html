@@ -49,10 +49,12 @@
           console.log("trains loaded!");
 
           trainIdTime = data.ts;
+          var cnt = 0;
 
           $.each(data.t, function( index, value ) {
             console.log( index + ": " + value.n );
             if(value.n.trim() == t) trainId = value.i;
+            cnt = cnt + 1; 
           });
 
           // trainIdTime and trainId
@@ -63,12 +65,18 @@
             $("#trackingTrainName").text(train);
             $("#trainDisplay").toggle();
 
+            if(cnt > 1) {
+              $("#errorMsg").text("Warning: More then one train found.");
+              $("#errorDisplay").show();
+            }
+
             // TODO: start periodic update here:
             updateTrainStatus();
 
           }
           else {
             console.log("Train not found?");
+            $("#errorMsg").text("Error: Train not found. :(");
             $("#errorDisplay").show();
           }
 
@@ -102,7 +110,7 @@
 
 
             <div id="errorDisplay" style="display:none;">
-              <p style="color:red;"><strong>Error: Train not found. :(</strong></p>
+              <p style="color:red;"><strong id="errorMsg">Error: Train not found. :(</strong></p>
             </div>
 
             <div id="trainForm">
